@@ -6,11 +6,11 @@ return array(
         'port' => '3306',
         'dbname' => 'h006357876_db',
         'username' => 'h006357876_mysql',
-        'password' => 'yKTTw+w2'),
+        'password' => ''),
     #Php Mailer Settings
     "mail" => array(
         'Username' => 'Kika.Ievlev@yandex.ru',
-        'Password' => 'spartakievlev17',
+        'Password' => '',
         'Subject' => "Letter Subject",
         'Host' => 'Mail Host',
         'Port' => 587,
@@ -25,7 +25,7 @@ return array(
     #Google Auth API
     "google"=>array(
         'clientID' =>'60706608674-mati91un5n34ihhoq2d2uomem0r4j2d4.apps.googleusercontent.com',  //AIzaSyBMDYwsNCPBkHwR72b9sPrd2MOaBYgn7hM
-        'clientSecret' => 'Zn8sQd0bi98preBOSUNuaLg5',
+        'clientSecret' => '',
         'redirectUri' => 'https://match-a.club/'
     )
 );
