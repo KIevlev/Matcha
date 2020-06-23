@@ -18,7 +18,6 @@
 			$stmt->execute();
             $data = $stmt->fetch()[0];
             
-
             //$data = $this->db->query($query)->fetch()[0];
             return($data);
         }
