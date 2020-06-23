@@ -1,0 +1,50 @@
+version: '3.1'
+
+services:
+
+  mysql:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: matcha
+      MYSQL_USER: matcha
+      MYSQL_PASSWORD: matcha
+
+  php-initial:
+    build: ./docker/php
+    restart: on-failure
+    volumes:
+      - ./src:/usr/src/myapp
+    working_dir: /usr/src/myapp/
+    command: /wait-for-it.sh mysql:3306 -- php ./config/server_setup.php
+    depends_on:
+      - mysql
+
+  php-wss:
+    build: ./docker/php
+    restart: always
+    volumes:
+      - ./src:/usr/src/myapp
+    working_dir: /usr/src/myapp/
+    command: php ./notification_ws/server.php
+
+  php-fpm:
+    build: ./docker/php
+    restart: always
+    ports:
+      - 9000:9000
+    volumes:
+      - ./src:/usr/src/myapp
+    working_dir: /usr/src/myapp/
+    command: /usr/bin/supervisord
+
+  nginx:
+    build: ./docker/nginx
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./src:/usr/src/myapp
+    working_dir: /usr/src/myapp/
