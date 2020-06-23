@@ -98,7 +98,7 @@ class Model_Registration extends Model{
         $db->db_change("INSERT INTO USER_TUTORIAL (tutorial_id, user_id) VALUES ('$tutorial_id', '$user_id')");
     }
     function check_email($email){
-        if (!preg_match("/[\w]+@[\w]/", $email))
+        if (!preg_match("/.+@.+\..+/i", $email))
             return (0);
         return (1);
     }
