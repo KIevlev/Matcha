@@ -16,14 +16,24 @@ services:
     restart: on-failure
     volumes:
       - ./src:/usr/src/myapp
-    working_dir: /usr/src/myapp/
-    command: /wait-for-it.sh mysql:3306 -- php ./config/server_setup.php
+    working_dir: /usr/src/myapp/config/
+    command: /wait-for-it.sh mysql:3306 -- php ./server_setup.php
     depends_on:
       - mysql
+
+  php-composer:
+    image: composer
+    restart: on-failure
+    volumes:
+      - ./src:/usr/src/myapp
+    working_dir: /usr/src/myapp/
+    command: composer require cboden/ratchet
 
   php-wss:
     build: ./docker/php
     restart: always
+    ports:
+      - 9001:9001
     volumes:
       - ./src:/usr/src/myapp
     working_dir: /usr/src/myapp/
@@ -32,8 +42,6 @@ services:
   php-fpm:
     build: ./docker/php
     restart: always
-    ports:
-      - 9000:9000
     volumes:
       - ./src:/usr/src/myapp
     working_dir: /usr/src/myapp/
