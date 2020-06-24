@@ -16,17 +16,17 @@
         {
             $stmt = $this->db->prepare($query);
 			$stmt->execute();
-            $data = $stmt->fetch()[0];
+            $data = $stmt->fetch();
             
             //$data = $this->db->query($query)->fetch()[0];
-            return($data);
+            return($data[0]);
         }
         public function db_read_multiple($query)
         {
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $data = $stmt->fetchAll;
+            $data = $stmt->fetchAll();
             //$data = $this->db->query($query)->fetchAll(PDO::FETCH_ASSOC);
             return($data);
         }
@@ -51,7 +51,7 @@
             $file = file_get_contents("./database_dump/$file_path");
             $stmt = $this->db->prepare($file);
             $stmt->execute();
-            $this->db->exec($file);
+            //$this->db->exec($file);
         }
     }
 ?>

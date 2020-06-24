@@ -104,8 +104,8 @@
                 <i class="fas fa-search-location"></i>
                 <input id="address" name="user_geo" type="text" required>
                 <span id="geo_detect_button"><i class="far fa-compass"></i></span>
-                <input id="geo_longitude" type="text" name="user_geo_longitude" required hidden>
-                <input id="geo_latitude" type="text" name="user_geo_latitude" required hidden>
+                <input id="geo_longitude" type="text" name="user_geo_longitude" required> <!-- hidden> -->
+                <input id="geo_latitude" type="text" name="user_geo_latitude" required> <!-- hidden> -->
             </div>
             <div id="welcome_block">
                 <h3>Enter your full name</h3>
