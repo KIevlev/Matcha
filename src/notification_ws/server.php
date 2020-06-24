@@ -1,4 +1,25 @@
 <?php
+
+use Ratchet\Server\IoServer;
+use Ratchet\Http\HttpServer;
+use Ratchet\WebSocket\WsServer;
+use MyWSS\Chat;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$server = IoServer::factory(
+    new HttpServer(
+        new WsServer(
+            new Chat()
+        )
+    ),
+    9001
+);
+
+$server->run();
+
+/*
+
 ob_implicit_flush();
 require_once __DIR__ . '/../config/database.php';
 $ini = include(__DIR__ . '/../config/config.php');
@@ -22,7 +43,7 @@ stream_context_set_option($context, 'ssl', 'verify_peer', false);*/
 if (!$socket) {
     echo ("socket unavailable<br />");
     die($errstr . "(" .$errno. ")\n");
-}*/
+}*//*
 // local_cert must be in PEM format
 stream_context_set_option($context, 'ssl', 'local_cert', $pemfile);
 // Pass Phrase (password) of private key
@@ -44,7 +65,7 @@ $connects = array();
 while (true) {
     $read = $connects;
     $read [] = $socket;
-    $write = $except = null;
+    $write = $except = [];
     if (!stream_select($read, $write, $except, null)) {//ожидаем сокеты доступные для чтения (без таймаута)
         break;
     }
