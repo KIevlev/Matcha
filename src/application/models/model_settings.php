@@ -42,7 +42,7 @@ class Model_Settings extends Model_Registration
     {
         $login = $_SESSION['login'];
         $db = new database();
-        $db->db_change("UPDATE matcha.USERS SET password = '$new_pass' WHERE login = '$login'");
+        $db->db_change("UPDATE h006357876_db.USERS SET password = '$new_pass' WHERE login = '$login'");
         $this->input_history_by_login($login, $login, 7);
         return 1;
     }
@@ -51,7 +51,7 @@ class Model_Settings extends Model_Registration
     {
         $login = $_SESSION['login'];
         $db = new database();
-        $db->db_change("UPDATE matcha.USERS SET email = '$email' WHERE login = '$login'");
+        $db->db_change("UPDATE h006357876_db.USERS SET email = '$email' WHERE login = '$login'");
         $this->input_history_by_login($login, $login, 6);
     }
 

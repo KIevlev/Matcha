@@ -6,7 +6,7 @@ services:
     image: mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 1
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
       MYSQL_DATABASE: matcha
       MYSQL_USER: matcha
       MYSQL_PASSWORD: matcha
@@ -51,19 +51,8 @@ services:
     build: ./docker/nginx
     restart: always
     ports:
-      - 8080:80
+      - 80:80
       - 443:443
     volumes:
       - ./src:/usr/src/myapp
     working_dir: /usr/src/myapp/
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    depends_on:
-      - mysql
-    restart: always
-    ports:
-      - "8082:80"
-    environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: 1
