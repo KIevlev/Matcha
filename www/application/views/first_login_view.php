@@ -5,11 +5,13 @@
 <script>
     $( function() {
         $(function () {
+            var maxBirthdayDate = new Date();
+            maxBirthdayDate.setFullYear( maxBirthdayDate.getFullYear() - 18 );
             $("#datepicker").datepicker({
                 changeMonth: true,
                 changeYear: true,
                 yearRange: '-100:+0',
-                maxDate: new Date(2002, 1 - 1, 1),
+                maxDate: maxBirthdayDate,
                 dateFormat: "yy.mm.dd"
             });
         });
@@ -72,7 +74,7 @@
                 }
             }
             else
-                print("Tags Error!");
+                print_r($data['tags']);
             ?>
         </div>
         <div id="load_tags_block"><input type="button" value="Load more #Tags" id="load_tags_button" class="auth_submit"></div>
@@ -104,8 +106,8 @@
                 <i class="fas fa-search-location"></i>
                 <input id="address" name="user_geo" type="text" required>
                 <span id="geo_detect_button"><i class="far fa-compass"></i></span>
-                <input id="geo_longitude" type="text" name="user_geo_longitude" required hidden>
-                <input id="geo_latitude" type="text" name="user_geo_latitude" required hidden>
+                <input id="geo_longitude" type="text" name="user_geo_longitude" > <!-- required hidden-->
+                <input id="geo_latitude" type="text" name="user_geo_latitude" >
             </div>
             <div id="welcome_block">
                 <h3>Enter your full name</h3>

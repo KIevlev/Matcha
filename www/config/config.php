@@ -4,12 +4,12 @@ return array(
     "db" => array(
         'host' => 'mysql',
         'port' => '3306',
-        'dbname' => 'matcha',
-        'username' => 'matcha',
-        'password' => 'matcha'),
+        'dbname' => 'matcha_db',
+        'username' => 'root',
+        'password' => 'secret'),
     #Php Mailer Settings
     "mail" => array(
-        'Username' => 'Kika.Ievlev@yandex.ru',
+        'Username' => 'you@yandex.ru',
         'Password' => '',
         'Subject' => "Letter Subject",
         'Host' => 'Mail Host',

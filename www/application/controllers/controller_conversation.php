@@ -1,5 +1,5 @@
 <?php
-define('PORT', "1488");
+
 class Controller_Conversation extends Controller
 {
     function __construct()

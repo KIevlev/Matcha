@@ -12,8 +12,16 @@ class model_first_login extends Model{
         $info = $data['info'];
         $tags = $data['tags'];
         $user_geo = $data['user_geo'];
-        $user_geo_longitude = $data['user_geo_longitude'];
-        $user_geo_latitude = $data['user_geo_latitude'];
+        if (!isset($data['user_geo_longitude']) || !isset($data['user_geo_longitude']))
+        {
+            $user_geo_longitude = "37." . rand(0, 9999);
+            $user_geo_latitude = "55." . rand(0, 9999);
+            ?> <script> </script> <?php
+        }
+        else{
+            $user_geo_longitude = $data['user_geo_longitude'];
+            $user_geo_latitude = $data['user_geo_latitude'];
+        }
         $user_full_name = $data['user_full_name'];
         $user_main_photo_token = $data['user_main_photo'];
         $user_photo_id = $db->db_read("SELECT photo_id FROM USER_PHOTO WHERE photo_token='$user_main_photo_token'");

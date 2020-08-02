@@ -28,13 +28,16 @@ class model_admin extends Model{
             $last_user_id++;
             $random_sex_preference = rand(1, 2);
             $random_sex = rand(1, 2);
+            $fullname = "test_user$last_user_id"; //
+            $password = md5(quotemeta(htmlspecialchars("test_user$last_user_id", ENT_QUOTES)));
             $geo = "Москва";
             $email = "$login@gmail.com";
+            $info = "i'm just a common bot)";
             $geo_longitude = "37." . rand(0, 9999);
             $geo_latitude = "55." . rand(0, 9999);
             $age = rand(1980, 2002) . "-01-01 00:00:00";
-            $db->db_change("INSERT IGNORE INTO USERS (login, email, geo, geo_longitude, geo_latitude, age, sex, sex_preference) 
-                                    VALUES ('$login', '$email', '$geo', '$geo_longitude', '$geo_latitude', '$age', '$random_sex', '$random_sex_preference')");
+            $db->db_change("INSERT IGNORE INTO USERS (login, email, password, geo, info, geo_longitude, geo_latitude, full_name, age, sex, sex_preference) 
+                                    VALUES ('$login', '$email', '$password', '$geo', '$info', '$geo_longitude', '$geo_latitude', '$fullname', '$age', '$random_sex', '$random_sex_preference')");
             $user_id = $db->db_read("SELECT user_id FROM USERS WHERE login='$login'");
             $db->db_change("INSERT IGNORE INTO USER_TAGS (user_id, tag_id) VALUES ('$user_id', '$random_tag_id_one')");
             $db->db_change("INSERT IGNORE INTO USER_TAGS (user_id, tag_id) VALUES ('$user_id', '$random_tag_id_two')");

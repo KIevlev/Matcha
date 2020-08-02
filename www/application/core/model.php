@@ -56,7 +56,7 @@ class Model
         $user_id = $db->db_read("SELECT user_id FROM USERS WHERE login='$login'");
         $tutorial_id = $db->db_read("SELECT tutorial_id FROM USER_TUTORIAL WHERE user_id='$user_id'");
         if($tutorial_id)
-            return ($tutorial_controller = $db->db_read("SELECT tutorial_controller FROM TUTORIALS WHERE tutorial_id='$tutorial_id'"));
+            return ($db->db_read("SELECT tutorial_controller FROM TUTORIALS WHERE tutorial_id='$tutorial_id'"));
         return (0);
     }
     function remove_tutorial($login, $tutorial_id){

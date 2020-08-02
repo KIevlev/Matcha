@@ -1,4 +1,4 @@
-(() => {
+/*(() => {
     const SECURE = false;
     const PORT = 9001;
 
@@ -15,7 +15,7 @@
     };
 })();
 
-/*
+*/
 
 let domain = window.document.domain;
 let get = window
@@ -29,11 +29,10 @@ let get = window
             //p[decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
             return a;
         }, {});
-//if (document.cookie.split('=', 2)[1] !== null){
 let cookie = document.cookie.split('=', 2)[1];
-//}
+
 let address = window.location.pathname;
-let socket = new WebSocket("wss://" + domain + ":9001");//+"/conversation/chat_view/"); //+":6969"
+//let socket = new WebSocket("wss://" + domain + ":9001");//+"/conversation/chat_view/"); //+":6969"
 let messageJSON = {};
 socket.onopen = function () {
     if (get[0] === "login" && address === "/profile/view/" && get[1] !== "") {
@@ -55,6 +54,12 @@ socket.onopen = function () {
         socket.send(JSON.stringify(messageJSON));
     }
 };
+
+/*$(document).ready(function(){
+    setInterval(appendCountNotifications, 500);
+    setInterval(appendCountNewMessage, 500);
+});
+*/
 
 socket.onerror = function (error) {
 };
@@ -120,9 +125,7 @@ function appendCountNotifications() {
     }
 }
 
-
 window.addEventListener('beforeunload', function (e) {
     socket.close();
 });
 
-*/

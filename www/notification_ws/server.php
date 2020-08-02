@@ -1,6 +1,14 @@
 <?php
+ob_implicit_flush();
+require_once __DIR__ . '/../config/database.php';
+$ini = include(__DIR__ . '/../config/config.php');
+$errstr = null;
+$errno = null;
+//$context = stream_context_create();
+$ip = $ini['ip_ws'];
+var_dump($ip);
 
-use Ratchet\Server\IoServer;
+/*use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 use MyWSS\Chat;
@@ -17,7 +25,7 @@ $server = IoServer::factory(
 );
 
 $server->run();
-
+*/
 /*
 
 ob_implicit_flush();
@@ -119,7 +127,7 @@ function handshake($connect) {
     fwrite($connect, $upgrade);
     return $info;
 }
-
+*/
 function encode($socketData, $type = "text", $masked = false){
     $b1 = 0x80 | (0x1 & 0x0f);
     $length = strlen($socketData);
@@ -182,7 +190,6 @@ function onMessage($connect, $data, $info) {
         }
     }
 }
-
 
 function createChatNotification($user_from_session, $chat_id, $message, $type)
 {
