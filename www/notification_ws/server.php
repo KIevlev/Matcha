@@ -1,5 +1,5 @@
 <?php
-ob_implicit_flush();
+/*ob_implicit_flush();
 require_once __DIR__ . '/../config/database.php';
 $ini = include(__DIR__ . '/../config/config.php');
 $errstr = null;
@@ -7,8 +7,8 @@ $errno = null;
 //$context = stream_context_create();
 $ip = $ini['ip_ws'];
 var_dump($ip);
-
-/*use Ratchet\Server\IoServer;
+*/
+use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 use MyWSS\Chat;
@@ -25,18 +25,18 @@ $server = IoServer::factory(
 );
 
 $server->run();
-*/
-/*
 
+
+/*
 ob_implicit_flush();
 require_once __DIR__ . '/../config/database.php';
 $ini = include(__DIR__ . '/../config/config.php');
 $errstr = null;
 $errno = null;
 $context = stream_context_create();
-$ip = $ini['ip_ws'];
+$ip = "localhost";//$ini['ip_ws'];
 var_dump($ip);
-$pemfile = '/home/h006357876/server.pem';
+$pemfile = '~/server.pem';
 $pem_passphrase = 'comet';
 //echo file_get_contents($pemfile);
 //$cert = 'ssl/combined_cert.pem';
@@ -51,7 +51,7 @@ stream_context_set_option($context, 'ssl', 'verify_peer', false);*/
 if (!$socket) {
     echo ("socket unavailable<br />");
     die($errstr . "(" .$errno. ")\n");
-}*//*
+}*/
 // local_cert must be in PEM format
 stream_context_set_option($context, 'ssl', 'local_cert', $pemfile);
 // Pass Phrase (password) of private key
@@ -60,11 +60,11 @@ stream_context_set_option($context, 'ssl', 'passphrase', $pem_passphrase);
 stream_context_set_option($context, 'ssl', 'allow_self_signed', true);
 stream_context_set_option($context, 'ssl', 'verify_peer', false);
 //$socket = stream_socket_server("ssl://$ip:8082", $errno, $errstr, STREAM_SERVER_BIND|STREAM_SERVER_LISTEN, $context);
-$socket = stream_socket_server("ssl://0.0.0.0:9001", $errno, $errstr, STREAM_SERVER_BIND|STREAM_SERVER_LISTEN, $context);  //0.0.0.0
+$socket = stream_socket_server("ssl://$ip:9001", $errno, $errstr, STREAM_SERVER_BIND|STREAM_SERVER_LISTEN, $context);  //0.0.0.0
 //$socket = stream_socket_server("tcp://0.0.0.0:9001", $errno, $errstr);  //0.0.0.0
-if (!$socket) {
-  //echo ("socket unavailable<br />");
-  //fclose($socket);
+/*if (!$socket) {
+  echo ("socket unavailable<br />");
+  fclose($socket);
   die($errstr . "(" .$errno. ")\n");
   
 }

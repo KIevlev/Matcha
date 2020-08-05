@@ -17,17 +17,6 @@ let textarea = document.getElementById('text');
 let blockButton = document.getElementById('block_button');
 
 
-/*$(document).ready(function(){
-
- fetch_user();
- append_my_old_message();
-
- setInterval(function(){
-  update_last_activity();
-  fetch_user();
- }, 5000);
-}*/
-
 function append_message(data) {
     let messages = $.parseJSON(data);
     for(let i in messages){
@@ -103,7 +92,7 @@ socket.onopen = function () {
         type: 18
     };
     socket.send(JSON.stringify(messageJSON));
-};
+}
 
 socket.onmessage = function (event) {
     let data = JSON.parse(event.data);

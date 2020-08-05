@@ -23,6 +23,6 @@ openssl_pkey_export($privkey, $pem[1], $pem_passphrase);
 $pem = implode($pem);
 
 // Save PEM file
-$pemfile = '/home/h006357876/server.pem';
+$pemfile = '~/server.pem';
 file_put_contents($pemfile, $pem);
 ?>

@@ -9,7 +9,7 @@ return array(
         'password' => 'secret'),
     #Php Mailer Settings
     "mail" => array(
-        'Username' => 'you@yandex.ru',
+        'Username' => 'Kika.Ievlev@yandex.ru',
         'Password' => '',
         'Subject' => "Letter Subject",
         'Host' => 'Mail Host',

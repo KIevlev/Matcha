@@ -32,7 +32,7 @@ let get = window
 let cookie = document.cookie.split('=', 2)[1];
 
 let address = window.location.pathname;
-//let socket = new WebSocket("wss://" + domain + ":9001");//+"/conversation/chat_view/"); //+":6969"
+let socket = new WebSocket("ws://" + domain + ":9001");//+"/conversation/chat_view/"); //+":6969"
 let messageJSON = {};
 socket.onopen = function () {
     if (get[0] === "login" && address === "/profile/view/" && get[1] !== "") {
